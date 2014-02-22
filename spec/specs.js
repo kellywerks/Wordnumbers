@@ -27,13 +27,23 @@ describe('numberToWord', function() {
     numberToWord(64).should.equal("sixty-four");
   });
 
-  it('gives us the string name for numbers between 100 and 199', function(){
-    numberToWord(144).should.equal("one hundred forty-four");
+  it('gives us the string name for 100', function(){
+    numberToWord(100).should.equal("one hundred");
+  });
+
+   it('gives us the string name for 100 thru 109', function(){
+    numberToWord(109).should.equal("one hundred nine");
   });
 
 });
   
 
+describe('last2Digits', function(x,y) {
+  it('gives us the string name for the last two digits of a number with 2 or more digits', function() {
+    last2Digits("2","0").should.equal("twenty");
+  });
+  
+});
 
 
 

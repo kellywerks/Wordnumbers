@@ -1,8 +1,4 @@
-var numberToWord = function(number) {
-  var cutNumber = number.toString().split("");
-  var result = "";
-
-  var numberOnes = {
+var numberOnes = {
     "0": "zero",
     "1": "one",
     "2": "two",
@@ -38,48 +34,35 @@ var numberToWord = function(number) {
     "80": "eighty",
     "90": "ninety"
   };
+
+var numberToWord = function(number) {
+  var cutNumber = number.toString().split("");
+  var result = "";
+
+  
 //length one numbers
  if(cutNumber.length === 1){
   return numberOnes[number];
 //length two numbers
- } else if (cutNumber.length === 2 && cutNumber[0] == 1) {
-   return numberUniqueTens[number];
- } else if (cutNumber.length === 2 && cutNumber[1] === "0"){
-     var tens = numberTens[cutNumber[0] + "0"];
-   return tens;  
- } else if (cutNumber.length === 2 && cutNumber[1] !== "0"){
-   var ones = numberOnes[cutNumber[1]];
-   var tens = numberTens[cutNumber[0] + "0"];
-   return tens + "-" + ones;  
-//about to write 100-199
-
- //   //twenty
- // } else if (cutNumber[0] == 2 && cutNumber[1] == 0){
- //   return numberTens[number];
- // } else if (cutNumber[0] == 2 && cutNumber[1] > 0) {
- //   return numberTens[20] + "-" + numberOnes[cutNumber[cutNumber.length -1]];
- //   //thirty
- //   } else if (cutNumber[0] == 3 && cutNumber[1] == 0){
- //   return numberTens[number];
- // } else if (cutNumber[0] == 3 && cutNumber[1] > 0) {
- //   return numberTens[30] + "-" + numberOnes[cutNumber[cutNumber.length -1]];
- //   //forty
- // } else if (cutNumber[0] == 4 && cutNumber[1] == 0){
- //   return numberTens[number];
- // } else if (cutNumber[0] == 4 && cutNumber[1] > 0) {
- //   return numberTens[40] + "-" + numberOnes[cutNumber[cutNumber.length -1]];
- //   //fifty
- // } else if (cutNumber[0] == 5 && cutNumber[1] == 0){
- //   return numberTens[number];
- // } else if (cutNumber[0] == 5 && cutNumber[1] > 0) {
- //   return numberTens[50] + "-" + numberOnes[cutNumber[cutNumber.length -1]];
- //   //sixty
- // } else if (cutNumber[0] == 6 && cutNumber[1] == 0){
- //   return numberTens[number];
- // } else if (cutNumber[0] == 6 && cutNumber[1] > 0) {
- //   return numberTens[60] + "-" + numberOnes[cutNumber[cutNumber.length -1]];
+} else if (cutNumber.length === 2) {
+    return last2Digits(cutNumber[0],cutNumber[1]);
  } else {
    return ("This number not supported.")
+ }
+};
+
+var last2Digits = function(x,y) {
+  if (x === "1") {
+   return numberUniqueTens[x + y];
+ } else if (y === "0"){
+     var tens = numberTens[x + "0"];
+     return tens;  
+ } else if (y !== "0"){
+   var ones = numberOnes[y];
+   var tens = numberTens[x + "0"];
+   return tens + "-" + ones;  
+ } else {
+   return "Something is terribly wrong!";
  }
 };
  
