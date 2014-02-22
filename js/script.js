@@ -46,23 +46,36 @@ var numberToWord = function(number) {
 //length two numbers
 } else if (cutNumber.length === 2) {
     return last2Digits(cutNumber[0],cutNumber[1]);
+
+//length three numbers
+}  else if (cutNumber.length === 3){
+  var final2Digits=last2Digits(cutNumber[1],cutNumber[2]);
+  return numberOnes[cutNumber[0]] + " hundred " + final2Digits;
+    
  } else {
    return ("This number not supported.")
  }
 };
 
 var last2Digits = function(x,y) {
-  if (x === "1") {
+  if (x == "1") {
    return numberUniqueTens[x + y];
- } else if (y === "0"){
+ } else if (y == "0" && x == "0"){
+  return "";
+ }
+ else if (y == "0"){
      var tens = numberTens[x + "0"];
      return tens;  
- } else if (y !== "0"){
+ } else if (y !== "0" && x == "0"){
+   var ones = numberOnes[y];
+   return ones;  
+ }else if (y !== "0"){
    var ones = numberOnes[y];
    var tens = numberTens[x + "0"];
    return tens + "-" + ones;  
- } else {
+ } 
+ else {
    return "Something is terribly wrong!";
  }
 };
- 
+ //Another way to look at this problem is using % instead of .length --Mac

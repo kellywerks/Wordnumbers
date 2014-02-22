@@ -28,21 +28,24 @@ describe('numberToWord', function() {
   });
 
   it('gives us the string name for 100', function(){
-    numberToWord(100).should.equal("one hundred");
+    numberToWord(100).should.equal("one hundred ");
   });
 
    it('gives us the string name for 100 thru 109', function(){
     numberToWord(109).should.equal("one hundred nine");
   });
+   it('gives us the string name for 100 to 999', function() {
+    numberToWord(244).should.equal('two hundred forty-four');
+   })
 
 });
   
 
 describe('last2Digits', function(x,y) {
   it('gives us the string name for the last two digits of a number with 2 or more digits', function() {
-    last2Digits("2","0").should.equal("twenty");
+    last2Digits(2,0).should.equal("twenty");
   });
-  
+
 });
 
 
